@@ -1,0 +1,54 @@
+version: '3.1'
+
+services:
+  php:
+    build: ./php
+    container_name: php
+    volumes:
+      - ../SPApp:/var/www/html
+    ports:
+      - '8055:80'
+    environment: 
+      APP_URL: 
+      WEB_DOCUMENT_ROOT: /var/www/html/public
+      WEB_DOCUMENT_INDEX: index.php
+      PHP_DATE_TIMEZONE: 'UTC + 5'
+      PHP_MEMORY_LIMIT: 2048M
+      PHP_UPLOAD_MAX_FILESIZE: 25M
+      PHP_POST_MAX_SIZE: 200M
+      PHP_DISPLAY_ERRORS: 1
+      XDEBUG_MODE: coverage
+      FPM_RLIMIT_CORE: 2   
+    depends_on:
+      - mysql
+
+  mysql:
+    build: ./mysql
+    container_name: mysql
+    volumes:
+      - ../mysql-db:/var/lib/mysql
+    ports:
+      - '8005:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: myapp
+      MYSQL_DATABASE: SPA
+      MYSQL_USER: myapp
+      MYSQL_PASSWORD: myapp
+      MYSQL_ROOT_HOST: '%'
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - '8006:80'
+    environment:
+      PMA_ARBITRARY: 0
+      PMA_HOST: 'mysql'
+      MYSQL_PASSWORD: 'myapp'
+    depends_on:
+      - mysql
+
+
+
+volumes:
+  mysql-db:

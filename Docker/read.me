@@ -1,0 +1,49 @@
+Название проекта
+SPA comments app
+
+Требования
+
+
+PHP 7.4 и выше
+Composer
+Node.js и npm
+Docker и Docker Compose
+
+Склонируйте репозиторий на ваш компьютер:
+
+Copy code
+git clone https://github.com/Alessandroooooy/phpLaravel.git
+
+Перейдите в директорию проекта:
+
+Copy code
+cd phpLaravel
+Установите зависимости PHP через Composer:
+
+Copy code
+composer install
+Установите зависимости JavaScript через npm:
+
+Copy code
+npm install
+Создайте файл .env на основе .env.example и настройте соединение с базой данных и другие переменные окружения:
+
+Copy code
+cp .env.example .env
+Сгенерируйте ключ приложения:
+
+Copy code
+php artisan key:generate
+Выполните миграции базы данных:
+
+Copy code
+php artisan migrate
+Запустите локальный сервер:
+
+Copy code
+php artisan serve
+
+
+Использование
+ввод в форму отображает какой пользователь с каким email написал какой комментарий
+
