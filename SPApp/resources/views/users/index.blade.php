@@ -19,7 +19,7 @@
             </div>
 
             <div class="col-md-4">
-                <!-- Форма для создания пользователя -->
+                
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Add User</h5>
