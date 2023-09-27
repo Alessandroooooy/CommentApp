@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CommentFactory extends Factory
 {
-    protected $model = Comment::class; // Убедитесь, что указано корректное имя модели
+    protected $model = Comment::class; 
 
     public function definition()
     {
         return [
-            'user_id' => User::factory(), // Создание пользователя и получение его ID
-            'text' => $this->faker->text(255), // Генерация текстового описания комментария
+            'user_id' => User::factory(), 
+            'text' => $this->faker->text(255), 
         ];
     }
 }
