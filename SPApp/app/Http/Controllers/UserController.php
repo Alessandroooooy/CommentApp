@@ -27,14 +27,14 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|min:3|max:255',
             'email' => 'required|email|unique:users',
-            'password' => 'required|string|min:8', // Вам нужно включить пароль
+            'password' => 'required|string|min:8', 
         ]);
 
         // Создание пользователя
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password), // Хеширование пароля
+            'password' => bcrypt($request->password), 
         ]);
 
         return redirect()->route('users.index')->with('success', 'Пользователь успешно создан');
